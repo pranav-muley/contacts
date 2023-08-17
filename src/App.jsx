@@ -6,7 +6,8 @@ import Contact from './components/Contact';
 function App() {
   const [apiData, setApiData] = useState([]);
   const [add, setAdd] = useState(true);
-  const [formData, setFormData] = useState({});
+  const [showForm,setShowForm] = useState(true);
+  
 
   const fetchData = async () => {
     const data = await fetch('https://jsonplaceholder.typicode.com/users');
@@ -18,17 +19,19 @@ function App() {
     fetchData();
   }, []);
 
-  const submitted = () => {
-    setAdd(!add);
-    alert('Successfully Added...');
-  };
-
   const updateFormData = (newData) => {
+    alert('Successfully Added...');
     setApiData([...apiData,newData]);
+    // setShowForm(!showForm);
     // addNewContact();
 
     // console.log("newData ",newData);
   };
+
+  const handleOnClick = ()=>{
+    setAdd(!add) ;
+    setShowForm(!showForm);
+  }
 
 
   console.log(apiData);
@@ -36,18 +39,32 @@ function App() {
   if (apiData.length !== 0) {
     return (
       <div className="container">
-        {add ? (
+        {add  ? (
+          
           <div className="add-btn" style={{ display: 'flex', flexDirection: 'row-reverse' }}>
-            <button className="btn btn-primary" onClick={() => setAdd(!add)}>
+            <button className="btn btn-primary" onClick={handleOnClick}>
               Add Contact
             </button>
-            <Contact apiData={apiData}
-         setApi={setApiData} />
           </div>
         ) : (
-          <Card updateFormData={updateFormData} />
+          <Card 
+          updateFormData={updateFormData} 
+          setShowForm ={setShowForm}
+          showForm = {showForm}
+          add ={add}
+          setAdd = {setAdd}
+          apiData={apiData}
+          />
         )}
 
+       {
+        showForm?(
+          <Contact 
+          apiData={apiData}
+          setApi={setApiData} 
+          />
+        ):""
+       }
         
       </div>
     );

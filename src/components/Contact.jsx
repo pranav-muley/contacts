@@ -19,6 +19,7 @@ const Contact = ({setApi,apiData}) => {
     }
     
     function deleteItem(apiData, id) {
+        console.log(id);
         return apiData.filter((obj) => obj.id !== id);
     }
 
@@ -48,8 +49,11 @@ const Contact = ({setApi,apiData}) => {
 
                         </div>
                         <div className="details">
-                            <a href="#" className="btn btn-primary" onClick={() => showDetails(ele.id)}>More Details</a>
-                            <a href="#" className="btn btn-primary" onClick={() => setApi(deleteItem(apiData,ele.id))}>delete</a>
+                            <a  className="btn btn-primary" onClick={() => showDetails(ele.id)}>More Details</a>
+                            <span>
+                                <a className="btn btn-dark" onClick={() => setApi(deleteItem(apiData,ele.id))}><i className="fa-solid fa-trash" style={{color:"red"}}></i>Delete</a>
+                                
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -84,7 +88,10 @@ const Contact = ({setApi,apiData}) => {
                         phone = {ele.phone}
                         website = {ele.website}
                         id = {ele.id}
-                        index = {index}
+                        address = {ele.address}
+                        company = {ele.company}
+                        apiData = {apiData}
+                        index={ele.id}
                     />
                 )}
             })

@@ -49,3 +49,7 @@ body{
     padding: 2rem;
     
 }
+.details{
+    display: flex;
+    justify-content: space-between;
+}
