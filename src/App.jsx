@@ -1,26 +1,57 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-// import Contact from './components/Contact';
+import React, { useState, useEffect } from 'react';
+import './App.css';
+import Card from './components/Card';
+import Contact from './components/Contact';
 
 function App() {
-  const [apiData, setApi] = useState(null);
+  const [apiData, setApiData] = useState([]);
+  const [add, setAdd] = useState(true);
+  const [formData, setFormData] = useState({});
 
-  const fetchData = async ()=>{
+  const fetchData = async () => {
     const data = await fetch('https://jsonplaceholder.typicode.com/users');
-    const json = await data.json();
-    // console.log(json['0'].name);
-    setApi(json);
-  }
+    const jsonData = await data.json();
+    setApiData(jsonData);
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     fetchData();
-  },[]);
-  console.log(apiData['0'].name,"apiData");
-  return (
-    <>
-      
-    </>
-  )
+  }, []);
+
+  const submitted = () => {
+    setAdd(!add);
+    alert('Successfully Added...');
+  };
+
+  const updateFormData = (newData) => {
+    setApiData([...apiData,newData]);
+    // addNewContact();
+
+    // console.log("newData ",newData);
+  };
+
+
+  console.log(apiData);
+
+  if (apiData.length !== 0) {
+    return (
+      <div className="container">
+        {add ? (
+          <div className="add-btn" style={{ display: 'flex', flexDirection: 'row-reverse' }}>
+            <button className="btn btn-primary" onClick={() => setAdd(!add)}>
+              Add Contact
+            </button>
+            <Contact apiData={apiData}
+         setApi={setApiData} />
+          </div>
+        ) : (
+          <Card updateFormData={updateFormData} />
+        )}
+
+        
+      </div>
+    );
+  }
 }
 
-export default App
+export default App;
