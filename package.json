@@ -1,12 +1,9 @@
 {
   "name": "contact-list",
-  "homepage": "http://pranav-muley.github.io/contact_List",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "predeploy":"npm run build",
-    "deploy":"gh-pages -d build",
     "start": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
