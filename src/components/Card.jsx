@@ -19,9 +19,7 @@ const Card = ({updateFormData,setShowForm,showForm,add,setAdd,apiData}) => {
 
   const onSubmit = ()=>{
     setShowForm(!showForm);
-    const inputValue = {id:apiData.length,...inputValues}
-    console.log(inputValue);
-    updateFormData(inputValue);
+    updateFormData(inputValues);
     setAdd(!add);
   }
   
@@ -42,7 +40,7 @@ const Card = ({updateFormData,setShowForm,showForm,add,setAdd,apiData}) => {
           value={inputValues.name}
           name="name"
           onChange={(e) => onHandleInputChangeupdate(e, "name")}
-          required
+          required="required"
         />
 
         
@@ -52,7 +50,7 @@ const Card = ({updateFormData,setShowForm,showForm,add,setAdd,apiData}) => {
          value={inputValues.UserName}
          name='UserName'
          onChange={(e) =>onHandleInputChangeupdate(e,"UserName")}
-         required ="true"
+         required="required"
          />
 
         <label htmlFor="exampleInputEmail1">Email address</label>
@@ -70,6 +68,7 @@ const Card = ({updateFormData,setShowForm,showForm,add,setAdd,apiData}) => {
          value={inputValues.website}
          name='website'
          onChange={(e) =>onHandleInputChangeupdate(e,"website")}
+         required="required"
          />
 
       </div>
@@ -81,7 +80,7 @@ const Card = ({updateFormData,setShowForm,showForm,add,setAdd,apiData}) => {
          value={inputValues.phone}
          name='phone'
          onChange={(e) =>onHandleInputChangeupdate(e,"phone")}
-         required
+         required="required"
          />
         {/* <input type="number" className="form-control" id="phone" placeholder="99XXX"/> */}
       </div>
@@ -94,7 +93,7 @@ const Card = ({updateFormData,setShowForm,showForm,add,setAdd,apiData}) => {
          value={inputValues.street}
          name='street'
          onChange={(e) =>onHandleInputChangeaddress(e,"street")}
-         required
+         required="required"
          />
          <label htmlFor="city">City</label>
         <input type="text" className="form-control" id="city"
@@ -102,7 +101,7 @@ const Card = ({updateFormData,setShowForm,showForm,add,setAdd,apiData}) => {
          value={inputValues.city}
          name='city'
          onChange={(e) =>onHandleInputChangeaddress(e,"city")}
-         required
+         required="required"
          />
          <label htmlFor="zipcode">zipcode</label>
         <input type="text" className="form-control" id="zipcode"
@@ -110,7 +109,7 @@ const Card = ({updateFormData,setShowForm,showForm,add,setAdd,apiData}) => {
          value={inputValues.zipcode}
          name='zipcode'
          onChange={(e) =>onHandleInputChangeaddress(e,"zipcode")}
-         required
+         required="required"
          />
       </div>
     <h4> Company Details</h4>
@@ -121,7 +120,7 @@ const Card = ({updateFormData,setShowForm,showForm,add,setAdd,apiData}) => {
           value={inputValues.company.name}
           name="name"
           onChange={(e) =>onHandleInputChangeCompany(e,"name")}
-          required
+          required="required"
         />
 
       <label htmlFor="about">Comapny Name</label>
@@ -130,7 +129,7 @@ const Card = ({updateFormData,setShowForm,showForm,add,setAdd,apiData}) => {
             value={inputValues.company.bs}
             name="bs"
             onChange={(e) =>onHandleInputChangeCompany(e,"bs")}
-            required
+            required="required"
           />
     </div>
 

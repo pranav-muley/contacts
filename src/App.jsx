@@ -21,7 +21,16 @@ function App() {
 
   const updateFormData = (newData) => {
     alert('Successfully Added...');
-    setApiData([...apiData,newData]);
+    var max = 0;
+    for (var j = 0; j < apiData.length; j++){
+      console.log("indedx ",apiData[j].id);
+        if(apiData[j].id > max){
+          max = apiData[j].id;
+        }
+      }
+
+      const updatedData = {id:max+1,...newData};
+    setApiData([...apiData,updatedData]);
     // setShowForm(!showForm);
     // addNewContact();
 
